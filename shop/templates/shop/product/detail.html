@@ -1,0 +1,35 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+
+
+{% block title %}
+{{ product.name }}
+{% endblock title %}
+
+{% block content %}
+<div>
+    <div>
+        <img src="{% if product.image %}
+                    {{ product.image.url }}
+                {% else %}
+                    {% static 'img/no_image.png' %}
+                {% endif %}" alt="Product image">
+    </div>
+    <div>
+        <h3>{{ product.name }}</h3>
+        <h4>
+            <a href="{{ product.category.get_absolute_url }}">
+                {{ product.category.name }}
+            </a>
+        </h4>
+    </div>
+
+    <form action="{% url 'cart:cart_add' product.id %}" method="POST">
+        {% csrf_token %}
+        {{ cart_product_form.as_p }}
+        <p><input type="submit" value="Add to cart"></p>
+    </form>
+
+    <p>{{ product.description }}</p>
+</div>
+{% endblock content %}
