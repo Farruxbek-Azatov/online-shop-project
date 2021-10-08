@@ -12,38 +12,40 @@ All products
 
 {% block content %}
 <div>
-    <div>
-        <div {% if not category %}class="selected" {% endif %}>
+
+    <p class="clearfix ms-4 text-primary fw-bold fs-4">Categories</p>    
+    <div class="category-all">
+        <div {% if not category %} class="selected" {% endif %} class="category-item">
             <a href="/">All</a>
         </div>
 
         {% for c in categories %}
-        <div {% if c.slug == category.slug %}class="selected" {% endif %}>
+        <div {% if c.slug == category.slug %} class="selected" {% endif %}  class="category-item">
             <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
         </div>
         {% endfor %}
 
     </div>
-    <div>
+    <div class="all-products">
 
         {% for product in products %}
-        <div>
-            <div>
+        <div class="product">
+            <div class="product-img-container">
                 <a href="{{ product.get_absolute_url }}">
                     <img src="{% if product.image %}
-                        product.image.url
+                        {{ product.image.url }}
                     {% else %}
                         {% static 'img/no_image.png' %}
-                    {% endif %}" alt="No image">
+                    {% endif %}" alt="No image" class="product-img">
                 </a>
             </div>
             <div>
                 <p>
-                    <a href="{{ product.get_absolute_url }}">
+                    <a href="{{ product.get_absolute_url }}" class="product-name">
                         {{ product.name }}
                     </a>
                 </p>
-                <p>${{ product.price }}</p>
+                <p class="product-price">${{ product.price }}</p>
             </div>
         </div>
         {% endfor %}
