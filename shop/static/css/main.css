@@ -20,6 +20,7 @@ body {
     padding: 0.5rem;
     background-color: #fff;
     z-index: 10;
+    box-shadow: 0 2px 5px #eee;
 }
 .top-icons {
     margin: auto 15px;
@@ -47,6 +48,7 @@ body {
 }
 .top-icons a:hover .fa-cog {
     animation-name: cog-rotate;
+    font-size: 1.5rem;
 }
 
 @keyframes cog-rotate {
@@ -162,7 +164,7 @@ body {
 }
 .product-name {
     text-decoration: none;
-    color: #000;
+    color: hsl(200, 100%, 50%);
     font-weight: bold;
 }
 .product-price {
@@ -172,7 +174,6 @@ body {
 .detail-img-container {
     width: 70%;
     margin: 0 auto;
-    padding: 1rem;
 }
 .detail-img-container:hover .detail-img {
     padding: 1rem;
@@ -183,10 +184,34 @@ body {
     width: 80%;
     border-radius: 6px;
 }
-
-.shop-img {
-    width: 50%;
+.product-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 }
+label[for="id_quantity"] {
+    font-weight: bold;
+    color: dodgerblue;
+}
+#id_quantity {
+    border-radius: 10px;
+    background-color: cyan;
+    outline: 1px solid blue;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+.table {
+    vertical-align: middle;
+    text-align: center;
+}
+.shop-img {
+    width: 100px;
+    vertical-align: middle;
+}
+
 
 .btn-add-cart input {
     background-color: aqua;
@@ -225,11 +250,16 @@ body {
     cursor: pointer;
 }
 .footer-date {
-    float: right;
-    margin-right: 3rem;
+    position: fixed;
+    top: 5px;
+    right: 0;
+    z-index: 15;
+    display: flex;    
 }
 .footer-date div{
-    color: blue;
+    font-size: 70%;
+    color: hsl(200, 100%, 50%);
+    margin-right: 0.5rem;
 }
 
 

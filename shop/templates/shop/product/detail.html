@@ -8,28 +8,27 @@
 
 {% block content %}
 <div>
-    <div class="detail-img-container">
+    <div class="detail-img-container mt-3">
         <img src="{% if product.image %}
                     {{ product.image.url }}
                 {% else %}
                     {% static 'img/no_image.png' %}
                 {% endif %}" alt="Product image" class="detail-img">
     </div>
-    <div>
+    <div class="product-description mt-3">
         <h3 class="product-name">{{ product.name }}</h3>
-        <h4>
-            <a href="{{ product.category.get_absolute_url }}">
+        <h4><span class="text-info">Category:</span> 
+            <a href="{{ product.category.get_absolute_url }}" class="text-decoration-none text-secondary">
                 {{ product.category.name }}
             </a>
         </h4>
+    
+        <form class="d-flex justify-content-between align-items-center" action="{% url 'cart:cart_add' product.id %}" method="POST">
+            {% csrf_token %}
+            {{ cart_product_form.as_p }}
+            <p class="btn-add-cart mx-2"><input type="submit" value="Add to cart"></p>
+        </form>
     </div>
-
-    <form action="{% url 'cart:cart_add' product.id %}" method="POST">
-        {% csrf_token %}
-        {{ cart_product_form.as_p }}
-        <p class="btn-add-cart"><input type="submit" value="Add to cart"></p>
-    </form>
-
     <p>{{ product.description }}</p>
 </div>
 {% endblock content %}
