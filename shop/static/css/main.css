@@ -184,6 +184,10 @@ body {
     border-radius: 6px;
 }
 
+.shop-img {
+    width: 50%;
+}
+
 .btn-add-cart input {
     background-color: aqua;
     font-size: 15px;
